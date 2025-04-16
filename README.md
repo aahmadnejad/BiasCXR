@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Pytorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Pytorch 2.6+](https://img.shields.io/pypi/v/torch?label=torch)](https://pytorch.org/)
 [![TensorFlow 2.8+](https://img.shields.io/badge/tensorflow-2.8+-orange.svg)](https://www.tensorflow.org/)
 
 ## Overview
@@ -126,7 +126,7 @@ matplotlib>=3.4.0
 seaborn>=0.11.2
 tensorboard>=2.19.0
 tqdm==4.67.1
-```
+```https://img.shields.io/pypi/v/torch?label=torch
 
 Additionally, please cite the MIMIC-CXR dataset:
 
@@ -145,10 +145,10 @@ Additionally, please cite the MIMIC-CXR dataset:
 
 ## Results
 
-[auc_comparison](GitAssets/auc_comparison.png)
-[fnr_comparison](GitAssets/fnr_comparison.png)
-[overall_fnr_improvement](GitAssets/overall_fnr_improvement.png)
-[overall_fpr_improvement.png](GitAssets/overall_fpr_improvement.png)
+[![auc_comparison](GitAssets/auc_comparison.png)]
+[![fnr_comparison](GitAssets/fnr_comparison.png)]
+[![overall_fnr_improvement](GitAssets/overall_fnr_improvement.png)]
+[![overall_fpr_improvement.png](GitAssets/overall_fpr_improvement.png)]
 
 ## License
 
