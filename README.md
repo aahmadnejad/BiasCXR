@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Pytorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![TensorFlow 2.8+](https://img.shields.io/badge/tensorflow-2.8+-orange.svg)](https://www.tensorflow.org/)
 
 ## Overview
@@ -33,28 +34,31 @@ Access requires completion of the CITI training to ensure appropriate use of sen
 
 ```
 BiasCXR/
-├── main.py           # Main script to run training and evaluation
-├── debiasing.py      # Implementation of debiasing techniques
-├── model.py          # Neural network architecture and training
-├── helper.py         # Utility functions and data processing
-├── store.py          # Configuration settings using dataclass
-├── requirements.txt  # Project dependencies
-├── README.md         # Project documentation
-└── LICENSE           # MIT License
+├── main.py             # Main script to run training and evaluation
+├── debiasing.py        # Implementation of debiasing techniques
+├── model.py            # Neural network architecture and training
+├── plotting.py         # plotting functions for the entire project
+├── processor.py        # processing functions such as creating debiased dataset
+├── inspectTFrecord.py  # read and see whats in tfrecords
+├── cuda_check.py       # check if CUDA is available
+├── cxr.py              # The CXR pytorch dataset class
+├── store.py            # Configuration settings using dataclass
+├── requirements.txt    # Project dependencies
+├── README.md           # Project documentation
+└── LICENSE             # MIT License
 ```
+
+** all outputs will save in a folder called output along with the tensorboard logs **
 
 ## Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/aahmadnejad/BiasCXR.git
 cd BiasCXR
 
-# Create and activate a virtual environment (optional but recommended)
 python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+source venv/bin/activate
 
-# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -99,13 +103,6 @@ Output Layer (14 neurons, sigmoid activation)
 
 This architecture is designed for multi-label classification of 14 common radiographic findings from chest X-ray embeddings.
 
-## Usage
-
-### Command-line Arguments
-
-```
---csv_path        Path to the CSV file (required)
-```
 
 ### Running from Command Line
 
@@ -116,55 +113,19 @@ The simplest way to use this repository is through the command-line interface:
 python main.py --csv_path /path/to/mimic_metadata.csv
 ```
 
-### Python API Usage
-
-For those who prefer to use the Python API directly:
-
-```python
-# Example code for loading and processing the MIMIC-CXR dataset
-import tensorflow as tf
-from helper import load_mimic_data, preprocess_dataset
-
-# Path to your downloaded MIMIC-CXR TFRecord files
-data_path = "path/to/mimic-cxr-tfrecords/"
-
-# Load and preprocess the dataset
-train_ds, val_ds, test_ds = load_mimic_data(data_path)
-
-# Analyze dataset distribution and apply rebalancing techniques
-from debiasing import analyze_distribution, balance_dataset
-distribution_stats = analyze_distribution(train_ds)
-balanced_train_ds = balance_dataset(train_ds, distribution_stats)
-
-# Train models and evaluate fairness
-from model import create_model, train_model, evaluate_fairness
-model = create_model()
-train_model(model, balanced_train_ds, val_ds)
-fairness_metrics = evaluate_fairness(model, test_ds)
-```
 
 ## Dependencies
 
 ```
 tensorflow>=2.8.0
+pytorch>=2.6.0
 numpy>=1.19.5
 pandas>=1.3.0
 scikit-learn>=1.0.0
 matplotlib>=3.4.0
 seaborn>=0.11.2
-```
-
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{ahmadnejad2025debiasing,
-  title={Debiasing CXR Dataset with Up-sampling and Down-sampling techniques},
-  author={Ahmadnejad Roudsari, AmirHossein},
-  journal={Proceedings of the 42nd International Conference on Machine Learning},
-  year={2025}
-}
+tensorboard>=2.19.0
+tqdm==4.67.1
 ```
 
 Additionally, please cite the MIMIC-CXR dataset:
@@ -182,6 +143,13 @@ Additionally, please cite the MIMIC-CXR dataset:
 }
 ```
 
+## Results
+
+[auc_comparison](GitAssets/auc_comparison.png)
+[fnr_comparison](GitAssets/fnr_comparison.png)
+[overall_fnr_improvement](GitAssets/overall_fnr_improvement.png)
+[overall_fpr_improvement.png](GitAssets/overall_fpr_improvement.png)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -190,3 +158,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - The MIMIC-CXR dataset is made available by the Beth Israel Deaconess Medical Center
 - Access provided through PhysioNet
+- The code report is [FairnessNBiass](FairnessNBiass.pdf) file.
