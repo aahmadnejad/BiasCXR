@@ -126,7 +126,7 @@ matplotlib>=3.4.0
 seaborn>=0.11.2
 tensorboard>=2.19.0
 tqdm==4.67.1
-```https://img.shields.io/pypi/v/torch?label=torch
+```
 
 Additionally, please cite the MIMIC-CXR dataset:
 
