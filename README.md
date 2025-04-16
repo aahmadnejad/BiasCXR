@@ -1,7 +1,7 @@
 # BiasCXR: Debiasing Chest X-Ray Datasets with Up-sampling and Down-sampling Techniques
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-red.svg)](https://www.python.org/downloads/)
 [![Pytorch 2.6+](https://img.shields.io/pypi/v/torch?label=torch)](https://pytorch.org/)
 [![TensorFlow 2.8+](https://img.shields.io/badge/tensorflow-2.8+-orange.svg)](https://www.tensorflow.org/)
 
@@ -63,7 +63,7 @@ pip install -r requirements.txt
 ```
 
 ## Configuration
-
+[
 The project uses a centralized configuration system in `store.py` using Python's `@dataclass`. This contains all the model parameters and settings including:
 
 - Model architecture dimensions (embedding size, hidden layers dimensions)
@@ -145,10 +145,10 @@ Additionally, please cite the MIMIC-CXR dataset:
 
 ## Results
 
-[![auc_comparison](GitAssets/auc_comparison.png)]
-[![fnr_comparison](GitAssets/fnr_comparison.png)]
-[![overall_fnr_improvement](GitAssets/overall_fnr_improvement.png)]
-[![overall_fpr_improvement.png](GitAssets/overall_fpr_improvement.png)]
+![auc_comparison](GitAssets/auc_comparison.png)
+![fnr_comparison](GitAssets/fnr_comparison.png)
+![overall_fnr_improvement](GitAssets/overall_fnr_improvement.png)
+![overall_fpr_improvement.png](GitAssets/overall_fpr_improvement.png)
 
 ## License
 
